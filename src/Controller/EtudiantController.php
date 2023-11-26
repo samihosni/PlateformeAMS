@@ -42,7 +42,7 @@ class EtudiantController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_etudiant_show', methods: ['GET'])]
+    #[Route('/show', name: 'app_etudiant_show', methods: ['GET'])]
     public function show(Etudiant $etudiant): Response
     {
         return $this->render('etudiant/show.html.twig', [
@@ -78,4 +78,6 @@ class EtudiantController extends AbstractController
 
         return $this->redirectToRoute('app_etudiant_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
 }
