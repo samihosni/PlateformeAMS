@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h2>Register</h2>
+    {{ form_start(registrationForm, {'action': path('app_register')}) }}
+    {{ form_widget(registrationForm) }}
+
+    <button type="submit">Register</button>
+
+    {{ form_end(registrationForm) }}
+
+    {% if form_errors(registrationForm) %}
+        <div class="alert alert-danger">
+            {{ form_errors(registrationForm) }}
+        </div>
+    {% endif %}
+{% endblock %}

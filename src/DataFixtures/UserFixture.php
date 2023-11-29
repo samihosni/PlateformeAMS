@@ -17,7 +17,6 @@ class UserFixture extends Fixture implements FixtureGroupInterface
     ) {}
     public function load(ObjectManager $manager): void
     {
-        #Administrateur
 
         $administrateur1 =new User();
         $administrateur1->setUsername("admin1AMS");
@@ -30,27 +29,12 @@ class UserFixture extends Fixture implements FixtureGroupInterface
         $manager->persist($administrateur1);
         $manager->persist($administrateur2);
 
-        #Enseignants
 
-        for($i=1; $i<=4; $i++){
-            $enseignant=new User();
-            $enseignant->setUsername("enseignant$i");
-            $enseignant->setPassword($this->hasher->hashPassword($enseignant,"ca1920$i"));
-            $manager->persist($enseignant);
-        }
-        #Etudiants
-
-        for($i=1; $i<=10; $i++){
-            $etudiant=new User();
-            $etudiant->setUsername("etudiant$i");
-            $etudiant->setPassword($this->hasher->hashPassword($etudiant,"ca1920$i"));
-            $manager->persist($etudiant);
-        }
         $manager->flush();
     }
 
     public static function getGroups(): array
     {
-        return ["enseignant","etudiant"];
+        return [];
     }
 }
