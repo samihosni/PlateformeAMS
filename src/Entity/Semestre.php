@@ -19,6 +19,12 @@ class Semestre
     #[ORM\Column]
     private ?int $numSemestre = null;
 
+    public function __toString(): string
+    {
+        return $this->numSemestre;
+
+    }
+
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateDebutSemestre = null;
 

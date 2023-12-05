@@ -1,7 +1,14 @@
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
-{% block body %}
-    <h2>Register</h2>
+{% block TitreBloc %}
+    Création
+{% endblock %}
+{% block TitrePage %}
+    Création d'un étudiant ou enseignant :
+{% endblock %}
+
+    {% block form %}
+    <h2>Ajout </h2>
     {{ form_start(registrationForm, {'action': path('app_register')}) }}
     {{ form_widget(registrationForm) }}
 

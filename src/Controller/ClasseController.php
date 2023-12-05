@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+
 #[Route('/classe')]
 class ClasseController extends AbstractController
 {
@@ -77,5 +78,17 @@ class ClasseController extends AbstractController
         }
 
         return $this->redirectToRoute('app_classe_index', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/listeClasses', name: 'liste_classes')]
+    public function listeClasses(): Response
+    {
+        // Récupérez toutes les classes depuis la base de données en utilisant l'EntityManager
+        $entityManager = $this->getDoctrine()->getManager();
+        $classes = $entityManager->getRepository(Classe::class)->findAll();
+
+        // Vous pouvez maintenant passer la liste des classes à votre template
+        return $this->render('classe/liste_classes.html.twig', [
+            'classes' => $classes,
+        ]);
     }
 }

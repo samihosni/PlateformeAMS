@@ -1,28 +1,30 @@
-{% extends 'base.html.twig' %}
+{% extends 'template.html.twig' %}
 
-{% block title %}Classe index{% endblock %}
-
+{% block TitrePage %}
+    La liste des classes
+{% endblock %}
 {% block body %}
-    <h1>Classe index</h1>
+
 
     <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>DesignationClasse</th>
-                <th>NiveauClasse</th>
-                <th>actions</th>
-            </tr>
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Num</th>
+            <th scope="col">Designation</th>
+            <th scope="col">Niveau</th>
+            <th scope="col">+</th>
+        </tr>
         </thead>
-        <tbody>
         {% for classe in classes %}
+
+        <tbody>
             <tr>
                 <td>{{ classe.id }}</td>
                 <td>{{ classe.designationClasse }}</td>
                 <td>{{ classe.niveauClasse }}</td>
                 <td>
-                    <a href="{{ path('app_classe_show', {'id': classe.id}) }}">show</a>
-                    <a href="{{ path('app_classe_edit', {'id': classe.id}) }}">edit</a>
+                    <a  href="{{ path('app_classe_show', {'id': classe.id}) }}"><h7 style="color: green">Afficher</h7></a> |
+                    <a href="{{ path('app_classe_edit', {'id': classe.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -33,5 +35,13 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_classe_new') }}">Create new</a>
+    <a href="{{ path('app_classe_new') }}" >Créer une  nouvelle classe</a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 {% endblock %}
+
+
+
+
