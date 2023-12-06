@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 #[Route('/classe')]
@@ -23,7 +24,7 @@ class ClasseController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_classe_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_classe_new', methods: ['GET', 'POST']),IsGranted('ROLE_ADMIN')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $classe = new Classe();
@@ -51,7 +52,7 @@ class ClasseController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_classe_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_classe_edit', methods: ['GET', 'POST']),IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, Classe $classe, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(ClasseType::class, $classe);
@@ -69,7 +70,7 @@ class ClasseController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_classe_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_classe_delete', methods: ['POST']),IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Classe $classe, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$classe->getId(), $request->request->get('_token'))) {
@@ -79,16 +80,5 @@ class ClasseController extends AbstractController
 
         return $this->redirectToRoute('app_classe_index', [], Response::HTTP_SEE_OTHER);
     }
-    #[Route('/listeClasses', name: 'liste_classes')]
-    public function listeClasses(): Response
-    {
-        // Récupérez toutes les classes depuis la base de données en utilisant l'EntityManager
-        $entityManager = $this->getDoctrine()->getManager();
-        $classes = $entityManager->getRepository(Classe::class)->findAll();
 
-        // Vous pouvez maintenant passer la liste des classes à votre template
-        return $this->render('classe/liste_classes.html.twig', [
-            'classes' => $classes,
-        ]);
-    }
 }

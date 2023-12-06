@@ -24,16 +24,17 @@ class Classe
     #[ORM\ManyToOne(inversedBy: 'classes')]
     private ?Filiere $filiere = null;
 
-    #[ORM\OneToMany(mappedBy: 'classe', targetEntity: Etudiant::class)]
-    private Collection $etudiants;
 
-    #[ORM\ManyToMany(targetEntity: Enseignant::class, mappedBy: 'classe')]
-    private Collection $enseignants;
+
+
+
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'classe')]
+    private Collection $users;
 
     public function __construct()
     {
-        $this->etudiants = new ArrayCollection();
-        $this->enseignants = new ArrayCollection();
+
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -77,58 +78,42 @@ class Classe
         return $this;
     }
 
-    /**
-     * @return Collection<int, Etudiant>
-     */
-    public function getEtudiants(): Collection
-    {
-        return $this->etudiants;
-    }
 
-    public function addEtudiant(Etudiant $etudiant): static
-    {
-        if (!$this->etudiants->contains($etudiant)) {
-            $this->etudiants->add($etudiant);
-            $etudiant->setClasse($this);
-        }
 
-        return $this;
-    }
 
-    public function removeEtudiant(Etudiant $etudiant): static
-    {
-        if ($this->etudiants->removeElement($etudiant)) {
-            // set the owning side to null (unless already changed)
-            if ($etudiant->getClasse() === $this) {
-                $etudiant->setClasse(null);
-            }
-        }
 
-        return $this;
-    }
+
+
+
+
+
+
+
+
+
 
     /**
-     * @return Collection<int, Enseignant>
+     * @return Collection<int, User>
      */
-    public function getEnseignants(): Collection
+    public function getUsers(): Collection
     {
-        return $this->enseignants;
+        return $this->users;
     }
 
-    public function addEnseignant(Enseignant $enseignant): static
+    public function addUser(User $user): static
     {
-        if (!$this->enseignants->contains($enseignant)) {
-            $this->enseignants->add($enseignant);
-            $enseignant->addClasse($this);
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
+            $user->addClasse($this);
         }
 
         return $this;
     }
 
-    public function removeEnseignant(Enseignant $enseignant): static
+    public function removeUser(User $user): static
     {
-        if ($this->enseignants->removeElement($enseignant)) {
-            $enseignant->removeClasse($this);
+        if ($this->users->removeElement($user)) {
+            $user->removeClasse($this);
         }
 
         return $this;

@@ -10,11 +10,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/cours')]
 class CoursController extends AbstractController
 {
-    #[Route('/', name: 'app_cours_index', methods: ['GET'])]
+    #[Route('/', name: 'app_cours_index', methods: ['GET']) ]
     public function index(CoursRepository $coursRepository): Response
     {
         return $this->render('cours/index.html.twig', [
@@ -22,7 +23,7 @@ class CoursController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_cours_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_cours_new', methods: ['GET', 'POST']),IsGranted('ROLE_ENSEIGNANT')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $cour = new Cours();
@@ -50,7 +51,7 @@ class CoursController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_cours_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_cours_edit', methods: ['GET', 'POST']),IsGranted('ROLE_ENSEIGNANT')]
     public function edit(Request $request, Cours $cour, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CoursType::class, $cour);
@@ -68,7 +69,7 @@ class CoursController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_cours_delete', methods: ['POST'])]
+    #[Route('/{id}', name: 'app_cours_delete', methods: ['POST']),IsGranted('ROLE_ENSEIGNANT')]
     public function delete(Request $request, Cours $cour, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$cour->getId(), $request->request->get('_token'))) {

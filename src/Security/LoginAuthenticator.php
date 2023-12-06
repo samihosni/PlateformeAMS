@@ -49,12 +49,15 @@ class LoginAuthenticator extends AbstractLoginFormAuthenticator
         }
 $user = $token->getUser();
 
-        if (in_array('ROLE_WORKER', $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('routename_for_workers'));
+        if (in_array('ROLE_ADMIN', $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate('app_template'));
         }
 
-        if (in_array('ROLE_CUSTOMER', $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('routename_for_customers'));
+        if (in_array('ROLE_ENSEIGNAT', $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate('lien ENSEIGNANT'));
+        }
+        if (in_array('ROLE_ETUDIANT', $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate('lien ENSEIGNANT'));
         }
 
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
@@ -63,7 +66,7 @@ $user = $token->getUser();
 
         // For example:
         // return new RedirectResponse($this->urlGenerator->generate('some_route'));
-            return new RedirectResponse($this->urlGenerator->generate('app_classe_index')) ;    }
+            return new RedirectResponse($this->urlGenerator->generate('accueil')) ;    }
 
     protected function getLoginUrl(Request $request): string
     {
