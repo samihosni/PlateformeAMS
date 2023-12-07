@@ -15,6 +15,7 @@ class CoursType extends AbstractType
             ->add('nomCours')
             ->add('volumeHoraire')
             ->add('coefficient')
+            ->add('module')
         ;
     }
 

@@ -1,16 +1,20 @@
 {% extends 'security.html.twig' %}
 
 {% block title %}
-    Log in!
+    S'authentifier
 {% endblock %}
 
 {% block body %}
+
     <div class="login-dark">
+
         <form method="post">
+
             {% if error %}
                 <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
             {% endif %}
-            <div class="mb-3" >  <center>  <font face="Elegant" size="6" > Université AMS</font> </center></div>
+            <div class="mb-3" >  <center>  <font face="Times new romain" size="6" > Université AMS</font> </center></div>
+
 
             {% if app.user %}
                 <div class="mb-3" >
@@ -19,21 +23,24 @@
             {% endif %}
 
             <label for="inputUsername">Nom de l'utilisateur</label>
-            <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+            <input type="text"  name="username" id="inputUsername" class="form-control" autocomplete="current-username" required >
             <label for="inputPassword">Mot de passe</label>
             <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
             <input type="hidden" name="_csrf_token"
                    value="{{ csrf_token('authenticate') }}"
             >
+            <hr>
             <center>
-            <button class="btn btn-lg btn-primary" type="submit" >
+            <button class="btn btn-lg btn-outline-primary" type="submit" >
                Se connecter
             </button>
             </center>
-            <center>
-            <a href="{{ path('app_logout') }}">Se déconnecter </a>
-            </center>
+
+
         </form>
+
     </div>
+
 {% endblock %}
+

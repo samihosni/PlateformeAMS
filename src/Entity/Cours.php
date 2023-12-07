@@ -32,6 +32,9 @@ class Cours
     #[ORM\OneToMany(mappedBy: 'cours', targetEntity: User::class)]
     private Collection $users;
 
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    private ?Module $module = null;
+
     public function __construct()
     {
         $this->notes = new ArrayCollection();
@@ -169,4 +172,18 @@ class Cours
 
         return $this;
     }
+
+    public function getModule(): ?Module
+    {
+        return $this->module;
+    }
+
+    public function setModule(?Module $module): static
+    {
+        $this->module = $module;
+
+        return $this;
+    }
+
+
 }

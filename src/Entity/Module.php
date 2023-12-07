@@ -24,9 +24,13 @@ class Module
     #[ORM\ManyToMany(targetEntity: Filiere::class, mappedBy: 'module')]
     private Collection $filieres;
 
+    #[ORM\OneToMany(mappedBy: 'module', targetEntity: Cours::class)]
+    private Collection $cours;
+
     public function __construct()
     {
         $this->filieres = new ArrayCollection();
+        $this->cours = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,5 +92,35 @@ class Module
     {
         return $this->nomModule;
 
+    }
+
+    /**
+     * @return Collection<int, Cours>
+     */
+    public function getCours(): Collection
+    {
+        return $this->cours;
+    }
+
+    public function addCour(Cours $cour): static
+    {
+        if (!$this->cours->contains($cour)) {
+            $this->cours->add($cour);
+            $cour->setModule($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCour(Cours $cour): static
+    {
+        if ($this->cours->removeElement($cour)) {
+            // set the owning side to null (unless already changed)
+            if ($cour->getModule() === $this) {
+                $cour->setModule(null);
+            }
+        }
+
+        return $this;
     }
 }

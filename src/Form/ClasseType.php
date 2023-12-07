@@ -15,7 +15,6 @@ class ClasseType extends AbstractType
             ->add('designationClasse')
             ->add('niveauClasse')
             ->add('filiere')
-            ->add('enseignants')
         ;
     }
 

@@ -14,7 +14,6 @@ class ModuleType extends AbstractType
         $builder
             ->add('nomModule')
             ->add('semestre')
-            ->add('filieres')
         ;
     }
 

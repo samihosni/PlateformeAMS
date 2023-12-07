@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>NomFiliere</th>
+                <th>Modules</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,6 +19,7 @@
             <tr>
                 <td>{{ filiere.id }}</td>
                 <td>{{ filiere.nomFiliere }}</td>
+                <td>{{ filiere.module }}</td>
                 <td>
                     <a href="{{ path('app_filiere_show', {'id': filiere.id}) }}">show</a>
                     <a href="{{ path('app_filiere_edit', {'id': filiere.id}) }}">edit</a>
