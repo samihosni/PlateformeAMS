@@ -53,11 +53,11 @@ $user = $token->getUser();
             return new RedirectResponse($this->urlGenerator->generate('app_template'));
         }
 
-        if (in_array('ROLE_ENSEIGNAT', $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('lien ENSEIGNANT'));
+        if (in_array('ROLE_ENSEIGNANT', $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate('app_template_enseignant'));
         }
         if (in_array('ROLE_ETUDIANT', $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('lien Etudiant'));
+            return new RedirectResponse($this->urlGenerator->generate('app_template_etudiant'));
         }
 
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
