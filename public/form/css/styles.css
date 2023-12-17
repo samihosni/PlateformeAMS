@@ -1,0 +1,16 @@
+/* Ajoutez ce style à votre fichier CSS styles.css ou créez un fichier CSS séparé */
+.form-signin {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-signin label {
+    margin-bottom: 0.5rem;
+}
+
+.form-signin input,
+.form-signin select {
+    margin-bottom: 1rem;
+}

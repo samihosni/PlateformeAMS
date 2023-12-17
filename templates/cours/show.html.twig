@@ -23,6 +23,10 @@
                 <th>Coefficient</th>
                 <td>{{ cour.coefficient }}</td>
             </tr>
+            <tr>
+                <th>Document</th>
+                <td><a href="{{ asset("/uploads/user/"~ cour.photo) }}">{{ cour.photo}}</a></td>
+            </tr>
         </tbody>
     </table>
 

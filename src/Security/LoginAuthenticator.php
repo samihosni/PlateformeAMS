@@ -57,7 +57,7 @@ $user = $token->getUser();
             return new RedirectResponse($this->urlGenerator->generate('lien ENSEIGNANT'));
         }
         if (in_array('ROLE_ETUDIANT', $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('lien ENSEIGNANT'));
+            return new RedirectResponse($this->urlGenerator->generate('lien Etudiant'));
         }
 
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {

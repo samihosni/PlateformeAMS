@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>NomModule</th>
+                <th>Cours</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -18,6 +19,8 @@
             <tr>
                 <td>{{ module.id }}</td>
                 <td>{{ module.nomModule }}</td>
+                <td> {% for c in module.cours %}
+                {{ c }} {% endfor %}</td>
                 <td>
                     <a href="{{ path('app_module_show', {'id': module.id}) }}">show</a>
                     <a href="{{ path('app_module_edit', {'id': module.id}) }}">edit</a>

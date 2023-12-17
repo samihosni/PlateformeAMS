@@ -10,10 +10,14 @@
             <tr>
                 <th>Id</th>
                 <td>{{ module.id }}</td>
+
             </tr>
             <tr>
                 <th>NomModule</th>
                 <td>{{ module.nomModule }}</td>
+            </tr>
+            <tr>   <th>Cours</th>
+                <td>{% for c in module.cours %} {{ c }} {% endfor %}</td>
             </tr>
         </tbody>
     </table>

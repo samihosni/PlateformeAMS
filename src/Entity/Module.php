@@ -24,8 +24,10 @@ class Module
     #[ORM\ManyToMany(targetEntity: Filiere::class, mappedBy: 'module')]
     private Collection $filieres;
 
-    #[ORM\OneToMany(mappedBy: 'module', targetEntity: Cours::class)]
+    #[ORM\ManyToMany(targetEntity: Cours::class, mappedBy: 'module')]
     private Collection $cours;
+
+
 
     public function __construct()
     {

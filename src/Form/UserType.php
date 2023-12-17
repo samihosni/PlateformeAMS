@@ -20,8 +20,7 @@ class UserType extends AbstractType
                     'Etudiant'=>"ROLE_ETUDIANT",
                 ]
             ])
-            ->add('password')
-            ->add('email')
+
         ;
     }
 

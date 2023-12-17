@@ -32,14 +32,19 @@ class Cours
     #[ORM\OneToMany(mappedBy: 'cours', targetEntity: User::class)]
     private Collection $users;
 
-    #[ORM\ManyToOne(inversedBy: 'cours')]
-    private ?Module $module = null;
+    #[ORM\ManyToMany(targetEntity: Module::class, inversedBy: 'cours')]
+    private Collection $module;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $photo = null;
+
+
 
     public function __construct()
     {
         $this->notes = new ArrayCollection();
-        $this->enseignants = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->module = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -173,7 +178,7 @@ class Cours
         return $this;
     }
 
-    public function getModule(): ?Module
+    public function getModule(): ArrayCollection|Collection
     {
         return $this->module;
     }
@@ -181,6 +186,39 @@ class Cours
     public function setModule(?Module $module): static
     {
         $this->module = $module;
+
+        return $this;
+    }
+
+    public function addModule(Module $module): static
+    {
+        if (!$this->module->contains($module)) {
+            $this->module->add($module);
+        }
+
+        return $this;
+    }
+
+    public function removeModule(Module $module): static
+    {
+        $this->module->removeElement($module);
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+            return $this->nomCours;
+    }
+
+    public function getPhoto(): ?string
+    {
+        return $this->photo;
+    }
+
+    public function setPhoto(?string $photo): static
+    {
+        $this->photo = $photo;
 
         return $this;
     }
