@@ -1,11 +1,11 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}New Cours{% endblock %}
+{% block title %}Nouveau cours{% endblock %}
 
 {% block body %}
-    <h1>Create new Cours</h1>
-
+    <h1>Créer un nouveau cours</h1>
+    <br>
     {{ include('cours/_form.html.twig') }}
-
-    <a href="{{ path('app_cours_index') }}">back to list</a>
+    <br>
+    <a href="{{ path('app_cours_index') }}"><button>Retour</button></a>
 {% endblock %}

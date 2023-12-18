@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -23,14 +24,19 @@ class RegistrationFormType extends AbstractType
     {
 
         $builder
-            ->add('username')
+            ->add('username', TextType::class, [
+                'label'=>"Nom d'utilisateur"
+            ])
             ->add('roles', ChoiceType::class,[
+                'label'=>"Role de l'utilisateur",
                 'choices'=>[
                 'Enseignant'=>'ROLE_ENSEIGNANT',
                 'Etudiant'=>'ROLE_ETUDIANT',
+
                     ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
+                'label'=>"Confirmer",
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
@@ -64,6 +70,7 @@ class RegistrationFormType extends AbstractType
                 ],
             ])
             ->add('plainPassword', PasswordType::class, [
+                'label'=>"Mot de passe",
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,

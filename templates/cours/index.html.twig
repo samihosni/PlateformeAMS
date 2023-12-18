@@ -1,18 +1,18 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Cours index{% endblock %}
+{% block title %}Liste des cours{% endblock %}
 
 {% block body %}
-    <h1>Cours index</h1>
+    <h1>Liste des cours</h1>
 
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>NomCours</th>
-                <th>VolumeHoraire</th>
-                <th>Coefficient</th>
-                <th>actions</th>
+                <th scope="col">Num </th>
+                <th scope="col">Nom du cours</th>
+                <th scope="col">Volume horaire</th>
+                <th scope="col">Coefficient</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +23,21 @@
                 <td>{{ cour.volumeHoraire }}</td>
                 <td>{{ cour.coefficient }}</td>
                 <td>
-                    <a href="{{ path('app_cours_show', {'id': cour.id}) }}">show</a>
-                    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">edit</a>
+                    <a href="{{ path('app_cours_show', {'id': cour.id}) }}"><button>Afficher</button></a>
+
+                    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}"><button>Modifier</button></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Rien trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_cours_new') }}">Create new</a>
+    <a href="{{ path('app_cours_new') }}"><button>Créer un nouveau cours</button></a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 {% endblock %}

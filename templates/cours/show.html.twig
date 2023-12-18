@@ -8,15 +8,15 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Num</th>
                 <td>{{ cour.id }}</td>
             </tr>
             <tr>
-                <th>NomCours</th>
+                <th>Nom du cours</th>
                 <td>{{ cour.nomCours }}</td>
             </tr>
             <tr>
-                <th>VolumeHoraire</th>
+                <th>Volume horaire</th>
                 <td>{{ cour.volumeHoraire }}</td>
             </tr>
             <tr>
@@ -24,15 +24,16 @@
                 <td>{{ cour.coefficient }}</td>
             </tr>
             <tr>
-                <th>Document</th>
+                <th>Document PDF</th>
                 <td><a href="{{ asset("/uploads/user/"~ cour.photo) }}">{{ cour.photo}}</a></td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_cours_index') }}">back to list</a>
+    <a href="{{ path('app_cours_index') }}"><button>Retour</button></a>
+    <br>
 
-    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">edit</a>
-
+    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}"><button>Modifier</button></a>
+    <br>
     {{ include('cours/_delete_form.html.twig') }}
 {% endblock %}
