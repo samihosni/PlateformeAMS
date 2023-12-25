@@ -1,18 +1,18 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Semestre index{% endblock %}
+{% block title %}Semestres{% endblock %}
 
 {% block body %}
-    <h1>Semestre index</h1>
+    <h1>Semestres</h1>
 
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>NumSemestre</th>
-                <th>DateDebutSemestre</th>
-                <th>DateFinSemestre</th>
-                <th>actions</th>
+                <th scope="col">Num</th>
+                <th scope="col">Num de Semestre</th>
+                <th scope="col">Date du debut de semestre</th>
+                <th scope="col">Date de fin de semestre</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +23,17 @@
                 <td>{{ semestre.dateDebutSemestre ? semestre.dateDebutSemestre|date('Y-m-d') : '' }}</td>
                 <td>{{ semestre.dateFinSemestre ? semestre.dateFinSemestre|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_semestre_show', {'id': semestre.id}) }}">show</a>
-                    <a href="{{ path('app_semestre_edit', {'id': semestre.id}) }}">edit</a>
+                    <a href="{{ path('app_semestre_show', {'id': semestre.id}) }}"><button>Afficher</button></a>
+                    <a href="{{ path('app_semestre_edit', {'id': semestre.id}) }}"><button>Modifier</button></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Rien trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_semestre_new') }}">Create new</a>
+    <a href="{{ path('app_semestre_new') }}"><button>Créer</button></a>
 {% endblock %}

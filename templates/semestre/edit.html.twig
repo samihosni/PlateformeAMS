@@ -1,13 +1,13 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Edit Semestre{% endblock %}
+{% block title %}Modifier semestre{% endblock %}
 
 {% block body %}
-    <h1>Edit Semestre</h1>
+    <h1>Modifier semestre</h1>
 
     {{ include('semestre/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_semestre_index') }}">back to list</a>
+    <a href="{{ path('app_semestre_index') }}"><button>Retour</button></a>
 
     {{ include('semestre/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,17 +1,17 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Module index{% endblock %}
+{% block title %}Modules{% endblock %}
 
 {% block body %}
-    <h1>Module index</h1>
+    <h1>Modules</h1>
 
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>NomModule</th>
-                <th>Cours</th>
-                <th>actions</th>
+                <th scope="col">Num</th>
+                <th scope="col">Nom du module</th>
+                <th scope="col">Cours</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -22,17 +22,17 @@
                 <td> {% for c in module.cours %}
                 {{ c }} {% endfor %}</td>
                 <td>
-                    <a href="{{ path('app_module_show', {'id': module.id}) }}">show</a>
-                    <a href="{{ path('app_module_edit', {'id': module.id}) }}">edit</a>
+                    <a href="{{ path('app_module_show', {'id': module.id}) }}"><button>Afficher</button></a>
+                    <a href="{{ path('app_module_edit', {'id': module.id}) }}"><button>edit</button></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Rien trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_module_new') }}">Create new</a>
+    <a href="{{ path('app_module_new') }}"><button>Créer</button></a>
 {% endblock %}

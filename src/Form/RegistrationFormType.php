@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Classe;
 use App\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -35,12 +37,15 @@ class RegistrationFormType extends AbstractType
 
                     ],
             ])
+
+
+
             ->add('agreeTerms', CheckboxType::class, [
                 'label'=>"Confirmer",
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => 'You should agree to our terms.',
+                        'message' => 'Accepter les conditions.',
                     ]),
                 ],
             ])

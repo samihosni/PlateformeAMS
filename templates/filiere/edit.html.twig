@@ -3,11 +3,11 @@
 {% block title %}Edit Filiere{% endblock %}
 
 {% block body %}
-    <h1>Edit Filiere</h1>
+    <h1>Modifier filiere</h1>
 
     {{ include('filiere/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_filiere_index') }}">back to list</a>
+    <a href="{{ path('app_filiere_index') }}"><button>Retour</button></a>
 
     {{ include('filiere/_delete_form.html.twig') }}
 {% endblock %}

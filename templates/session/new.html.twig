@@ -1,11 +1,11 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}New Session{% endblock %}
+{% block title %}Nouvelle session{% endblock %}
 
 {% block body %}
-    <h1>Create new Session</h1>
+    <h1>Créer une session</h1>
 
     {{ include('session/_form.html.twig') }}
 
-    <a href="{{ path('app_session_index') }}">back to list</a>
+    <a href="{{ path('app_session_index') }}"><button>Retour</button></a>
 {% endblock %}

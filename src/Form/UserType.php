@@ -21,6 +21,7 @@ class UserType extends AbstractType
                 ]
             ])
 
+
         ;
     }
 

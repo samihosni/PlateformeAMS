@@ -50,8 +50,9 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             {% if app.user %}
+                <img src="{{ asset("/uploads/user/"~ app.user.image) }}" width="50" height="50">
                 <li ><a href=""><span class="glyphicon glyphicon-user"></span>Connecté(e) en tant  que: {{ app.user.userIdentifier }}</a>
-                    <img src="{{ asset('uploads/user/' ~ app.user.userIdentifier) }}" height="20" width="20">
+
                 </li>
                 <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Se déconnecter</a></li>
             {% else %}

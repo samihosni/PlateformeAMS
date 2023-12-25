@@ -1,18 +1,18 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Session index{% endblock %}
+{% block title %}Sessions{% endblock %}
 
 {% block body %}
-    <h1>Session index</h1>
+    <h1>Sessions</h1>
 
     <table class="table">
-        <thead>
+        <thead class="thead-dark">
             <tr>
-                <th>Id</th>
-                <th>NomSession</th>
-                <th>DateDebSession</th>
-                <th>DateFinSession</th>
-                <th>actions</th>
+                <th scope="col">Num</th>
+                <th scope="col">Nom du session</th>
+                <th scope="col">Date de debut de session</th>
+                <th scope="col">Date de fin de session</th>
+                <th scope="col">actions</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +23,17 @@
                 <td>{{ session.dateDebSession ? session.dateDebSession|date('Y-m-d') : '' }}</td>
                 <td>{{ session.dateFinSession ? session.dateFinSession|date('Y-m-d') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_session_show', {'id': session.id}) }}">show</a>
-                    <a href="{{ path('app_session_edit', {'id': session.id}) }}">edit</a>
+                    <a href="{{ path('app_session_show', {'id': session.id}) }}"><button>Afficher</button></a>
+                    <a href="{{ path('app_session_edit', {'id': session.id}) }}"><button>Modifier</button></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">Rien trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_session_new') }}">Create new</a>
+    <a href="{{ path('app_session_new') }}"><button>Créer</button></a>
 {% endblock %}

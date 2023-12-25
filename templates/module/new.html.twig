@@ -1,11 +1,11 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}New Module{% endblock %}
+{% block title %}Npuvea module{% endblock %}
 
 {% block body %}
-    <h1>Create new Module</h1>
+    <h1>Créer un nouveau module</h1>
 
     {{ include('module/_form.html.twig') }}
 
-    <a href="{{ path('app_module_index') }}">back to list</a>
+    <a href="{{ path('app_module_index') }}"><button>Retour</button></a>
 {% endblock %}

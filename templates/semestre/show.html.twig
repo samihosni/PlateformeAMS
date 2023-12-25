@@ -8,27 +8,27 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
+                <th>Num</th>
                 <td>{{ semestre.id }}</td>
             </tr>
             <tr>
-                <th>NumSemestre</th>
+                <th>Num de semestre</th>
                 <td>{{ semestre.numSemestre }}</td>
             </tr>
             <tr>
-                <th>DateDebutSemestre</th>
+                <th>Date de debut de semestre</th>
                 <td>{{ semestre.dateDebutSemestre ? semestre.dateDebutSemestre|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
-                <th>DateFinSemestre</th>
+                <th>Date de fin de semestre</th>
                 <td>{{ semestre.dateFinSemestre ? semestre.dateFinSemestre|date('Y-m-d') : '' }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_semestre_index') }}">back to list</a>
+    <a href="{{ path('app_semestre_index') }}"><button>Retour</button></a>
 
-    <a href="{{ path('app_semestre_edit', {'id': semestre.id}) }}">edit</a>
+    <a href="{{ path('app_semestre_edit', {'id': semestre.id}) }}"><button>Modifier</button></a>
 
     {{ include('semestre/_delete_form.html.twig') }}
 {% endblock %}
