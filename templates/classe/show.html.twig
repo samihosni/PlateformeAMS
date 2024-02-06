@@ -3,35 +3,50 @@
 {% block title %}Classe{% endblock %}
 
 {% block body %}
-    <h1>Classe: {{ classe.niveauClasse }} {{ classe.designationClasse }} </h1>
-<div class="container mt-2">
-    <div class="row justify-content-lg-evenly">
-        <div class="mb-4">
-            <div class="row-cols-md-3">
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Num</th>
-                <td>{{ classe.id }}</td>
-            </tr>
-            <tr>
-                <th>Designation de classe</th>
-                <td>{{ classe.designationClasse }}</td>
-            </tr>
-            <tr>
-                <th>Niveau de classe</th>
-                <td>{{ classe.niveauClasse }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <h1>Classe: {{ classe.niveauClasse }}-{{ classe.filiere }}-{{ classe.designationClasse }} </h1>
+    <div class="container mt-2">
+        <div class="row justify-content-lg-evenly">
+            <div class="mb-4">
+                <div class="row-cols-md-3">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Num</th>
+                            <td>{{ classe.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Filière</th>
+                            <td>{{ classe.filiere }}</td>
+                        </tr>
+                        <tr>
+                            <th>Designation de classe</th>
+                            <td>{{ classe.designationClasse }}</td>
+                        </tr>
+                        <tr>
+                            <th>Niveau de classe</th>
+                            <td>{{ classe.niveauClasse }}</td>
+                        </tr>
+                        <tr>
+                            <th>Liste des étudiants</th>
+                            <td>
+                                <ul>
+                                    {% for user in classe.users %}
+                                        <li>{{ user.username }}</li>
+                                        <li><img src="{{ user.image }}" ></li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
 
-    <a href="{{ path('app_classe_index') }}"><button>Retour</button></a>
+                    <a href="{{ path('app_classe_index') }}"><button>Retour</button></a>
 
-    <a href="{{ path('app_classe_edit', {'id': classe.id}) }}"><button>Modifier</button></a>
+                    <a href="{{ path('app_classe_edit', {'id': classe.id}) }}"><button>Modifier</button></a>
 
-    {{ include('classe/_delete_form.html.twig') }}
+                    {{ include('classe/_delete_form.html.twig') }}
                 </div>
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}

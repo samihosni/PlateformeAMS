@@ -10,6 +10,7 @@
             <tr>
                 <th scope="col">Num</th>
                 <th scope="col">Num de Semestre</th>
+                <th scope="col">Session</th>
                 <th scope="col">Date du debut de semestre</th>
                 <th scope="col">Date de fin de semestre</th>
                 <th scope="col">Actions</th>
@@ -20,6 +21,7 @@
             <tr>
                 <td>{{ semestre.id }}</td>
                 <td>{{ semestre.numSemestre }}</td>
+                <td>{{ semestre.session.nomSession }}</td>
                 <td>{{ semestre.dateDebutSemestre ? semestre.dateDebutSemestre|date('Y-m-d') : '' }}</td>
                 <td>{{ semestre.dateFinSemestre ? semestre.dateFinSemestre|date('Y-m-d') : '' }}</td>
                 <td>

@@ -24,7 +24,8 @@ class Module
     #[ORM\ManyToMany(targetEntity: Filiere::class, mappedBy: 'module')]
     private Collection $filieres;
 
-    #[ORM\ManyToMany(targetEntity: Cours::class, mappedBy: 'module')]
+
+    #[ORM\OneToMany(mappedBy: 'module', targetEntity: Cours::class)]
     private Collection $cours;
 
 
@@ -95,6 +96,7 @@ class Module
         return $this->nomModule;
 
     }
+
 
     /**
      * @return Collection<int, Cours>

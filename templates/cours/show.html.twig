@@ -16,6 +16,15 @@
                 <td>{{ cour.nomCours }}</td>
             </tr>
             <tr>
+                <th>Professeur</th>
+                <td><ul>
+                        {% for user in cour.users %}
+                            <li>(Mme/Mr) : {{ user.username }}</li>
+                            <li><img src="{{ user.image }}" ></li>
+                        {% endfor %}
+                    </ul></td>
+            </tr>
+            <tr>
                 <th>Volume horaire</th>
                 <td>{{ cour.volumeHoraire }}</td>
             </tr>

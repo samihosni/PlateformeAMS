@@ -1,0 +1,10 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Affectation Réussie{% endblock %}
+
+{% block body %}
+<div class="alert alert-success" role="alert">
+    L'affectation des utilisateurs aux classes a été effectuée avec succès!
+</div>
+<a href="{{ path('app_affectation_user') }}" class="btn btn-primary">Retour</a>
+{% endblock %}

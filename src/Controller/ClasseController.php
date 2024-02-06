@@ -14,8 +14,10 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 #[Route('/classe')]
+
 class ClasseController extends AbstractController
 {
+
     #[Route('/', name: 'app_classe_index', methods: ['GET'])]
     public function index(ClasseRepository $classeRepository): Response
     {

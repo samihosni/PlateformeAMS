@@ -38,8 +38,6 @@ class RegistrationFormType extends AbstractType
                     ],
             ])
 
-
-
             ->add('agreeTerms', CheckboxType::class, [
                 'label'=>"Confirmer",
                 'mapped' => false,

@@ -32,8 +32,8 @@ class Cours
     #[ORM\OneToMany(mappedBy: 'cours', targetEntity: User::class)]
     private Collection $users;
 
-    #[ORM\ManyToMany(targetEntity: Module::class, inversedBy: 'cours')]
-    private Collection $module;
+    #[ORM\ManyToOne(inversedBy: 'cours')]
+    private ?Module $module = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $photo = null;

@@ -35,11 +35,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    /**
+     * @return Collection
+     */
+    public function getFiliere(): Collection
+    {
+        return $this->filiere;
+    }
+
+    /**
+     * @param Collection $filiere
+     */
+    public function setFiliere(Collection $filiere): void
+    {
+        $this->filiere = $filiere;
+    }
+
     #[ORM\ManyToOne(inversedBy: 'users')]
     private ?Cours $cours = null;
 
     #[ORM\ManyToMany(targetEntity: Classe::class, inversedBy: 'users')]
     private Collection $classe;
+    #[ORM\ManyToMany(targetEntity: Filiere::class, inversedBy: 'users')]
+    private Collection $filiere;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Note::class)]
     private Collection $notes;
@@ -51,6 +69,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->classe = new ArrayCollection();
         $this->notes = new ArrayCollection();
+        $this->filiere= new ArrayCollection();
     }
 
 
@@ -154,25 +173,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, CLasse>
+     * @return Collection<int, Classe>
      */
-    public function getClasse(): Collection
+    public function getClasses(): Collection
     {
         return $this->classe;
     }
 
-    public function addClasse(CLasse $classe): static
+    public function addClasse(Classe $classe): static
     {
         if (!$this->classe->contains($classe)) {
             $this->classe->add($classe);
+            $classe->addUser($this);
         }
 
         return $this;
     }
 
-    public function removeClasse(CLasse $classe): static
+    public function removeClasse(Classe $classe): static
     {
-        $this->classe->removeElement($classe);
+        if ($this->classe->removeElement($classe)) {
+            $classe->removeUser($this);
+        }
 
         return $this;
     }

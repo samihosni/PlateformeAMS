@@ -1,0 +1,37 @@
+{% extends 'template.html.twig' %}
+
+{% block title %}Affectation des enseignants au cours{% endblock %}
+
+{% block body %}
+    <div class="container mt-2">
+        <div class="row justify-content-lg-evenly">
+            <div class="mb-4">
+                <h1>Affectation des enseignants au cours</h1>
+                {{ form_start(form) }}
+
+                <div class="form-group">
+                    <label for="{{ form.utilisateurs.vars.id }}" class="col-form-label">Utilisateurs:</label>
+                    <input type="text" class="form-control mb-2" id="search" placeholder="Rechercher...">
+                    {{ form_widget(form.utilisateurs, {'attr': {'class': 'form-control', 'style': 'height: 200px;', 'id': 'user-list' }}) }}
+                </div>
+
+                {{ form_row(form.cours, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#search').on('keyup', function() {
+                var value = $(this).val().toLowerCase();
+                $('#user-list option').filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+{% endblock %}
+

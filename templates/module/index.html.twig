@@ -7,20 +7,25 @@
 
     <table class="table">
         <thead class="thead-dark">
-            <tr>
-                <th scope="col">Num</th>
-                <th scope="col">Nom du module</th>
-                <th scope="col">Cours</th>
-                <th scope="col">Actions</th>
-            </tr>
+        <tr>
+            <th scope="col">Num</th>
+            <th scope="col">Nom du module</th>
+            <th scope="col">Cours</th>
+            <th scope="col">Actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for module in modules %}
             <tr>
                 <td>{{ module.id }}</td>
                 <td>{{ module.nomModule }}</td>
-                <td> {% for c in module.cours %}
-                {{ c }} {% endfor %}</td>
+                <td>
+                    <ul>
+                            {% for cour in module.cours %}
+                            <li>{{ cour.nomCours }}</li>
+                            {% endfor %}
+                    </ul>
+                </td>
                 <td>
                     <a href="{{ path('app_module_show', {'id': module.id}) }}"><button>Afficher</button></a>
                     <a href="{{ path('app_module_edit', {'id': module.id}) }}"><button>edit</button></a>
