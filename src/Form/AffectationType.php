@@ -32,7 +32,9 @@ class AffectationType extends AbstractType
             ->add('classe', EntityType::class, [
                 'class' => Classe::class,
                 'label' => 'Classe',
-                'choice_label' => 'designationClasse', // Changez ceci selon le champ à afficher pour les classes
+                'choice_label' => function($classe){
+                return $classe->__toString();
+                }, // Changez ceci selon le champ à afficher pour les classes
                 'required' => true,
             ])
             ->add('submit', SubmitType::class, [
